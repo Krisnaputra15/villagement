@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $nama_layanan
  * @property string $deskripsi
  * @property string $syarat
+ * @property int|null $is_active
  * 
  * @property Collection|Permohonan[] $permohonans
  *
@@ -30,6 +31,7 @@ class Layanan extends Model
 		'nama_layanan',
 		'deskripsi',
 		'syarat',
+		'is_active'
 	];
 
 	public function permohonans()

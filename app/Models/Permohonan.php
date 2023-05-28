@@ -17,7 +17,8 @@ use Illuminate\Database\Eloquent\Concerns\HasUlids;
  * @property string $id
  * @property int $layanan_id
  * @property string $user_id
- * @property bool $is_accepted
+ * @property int $status
+ * @property string $declined_reason
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
@@ -41,7 +42,8 @@ class Permohonan extends Model
 	protected $fillable = [
 		'layanan_id',
 		'user_id',
-		'is_accepted'
+		'status',
+		'declined_reason'
 	];
 
 	public function layanan()

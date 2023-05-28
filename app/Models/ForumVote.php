@@ -16,7 +16,6 @@ use Illuminate\Database\Eloquent\Concerns\HasUlids;
  * @property string $id
  * @property string $user_id
  * @property string $forum_id
- * @property string $vote_type
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
@@ -33,7 +32,6 @@ class ForumVote extends Model
 	protected $fillable = [
 		'user_id',
 		'forum_id',
-		'vote_type'
 	];
 
 	public function forum()

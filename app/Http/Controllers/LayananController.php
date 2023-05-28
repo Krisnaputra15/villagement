@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Exception;
 use App\Models\Layanan;
+use App\Models\Permohonan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
@@ -16,8 +17,11 @@ class LayananController extends Controller
      */
     public function index()
     {
-        $data = Layanan::all();
-        return view('layanan.index', ['data' => $data]);
+        $data = Layanan::orderBy('is_active', 'desc')->orderBy('nama_layanan', 'asc')->get();
+        if(Auth::user()->level == 1){
+            return view('admin.layanan.index', ['data' => $data, 'page' => 'layanan']);
+        }
+        return view('layanan.index', ['data' => $data, 'page' => 'layanan']);
     }
 
     /**
@@ -33,6 +37,13 @@ class LayananController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|string',
+            'syarat' => 'required'
+        ]);
+        if($validator->fails()){
+            return redirect('/admin/layanan')->with('error', $validator->messages()->first());
+        }
         $syaratRaw = $this->buildRawSyarat($request->syarat);
         
         $create = Layanan::create([
@@ -40,7 +51,7 @@ class LayananController extends Controller
             'deskripsi' => $request->deskripsi,
             'syarat' => $syaratRaw
         ]);
-        dd($create);
+        return redirect('admin/layanan')->with('success', 'Berhasil menambahkan data layanan');
     }
 
     /**
@@ -49,8 +60,12 @@ class LayananController extends Controller
     public function show(string $id)
     {
         $data = Layanan::find($id);
-        $syaratArray = explode(";", $data->syaratArray);
-        return view('layanan.show', ['data' => $data, 'syarat' => $syaratArray]);
+        $syaratArray = explode(";", $data->syarat);
+        if(Auth::user()->level == 1){
+            $permohonan = Permohonan::where('layanan_id', $id)->orderBy('status', 'asc')->orderBy('created_at', 'asc')->get();
+            return view('admin.layanan.detail', ['layanan' => $data, 'syarat' => $syaratArray, 'permohonan' => $permohonan, 'page' => 'layanan']);
+        }
+        return view('admin.layanan.detail', ['layanan' => $data, 'syarat' => $syaratArray, 'page' => 'layanan']);
     }
 
     /**
@@ -67,14 +82,23 @@ class LayananController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|string',
+            'syarat' => 'required',
+            'status' => 'required|numeric'
+        ]);
+        if($validator->fails()){
+            return redirect('/admin/layanan/'.$id)->with('error', $validator->messages()->first());
+        }
         $syaratRaw = $this->buildRawSyarat($request->syarat);
         
-        $create = Layanan::where('id', $id)->update([
+        $update = Layanan::where('id', $id)->update([
             'nama_layanan' => $request->nama,
             'deskripsi' => $request->deskripsi,
+            'is_active' => $request->status,
             'syarat' => $syaratRaw
         ]);
-        dd($create);
+        return redirect('admin/layanan/'.$id)->with('success', 'Berhasil memperbarui data layanan');
     }
 
     /**
@@ -84,9 +108,9 @@ class LayananController extends Controller
     {
         $delete = Layanan::where('id', $id)->delete();
         if($delete){
-            return redirect('/admin/layanan')->with('success'. 'berhasil memnghapus layanan');
+            return redirect('/admin/layanan')->with('success'. 'Berhasil memnghapus layanan');
         }
-        return redirect('/admin/layanan')->with('error'. 'gagal menghapus layanan');
+        return redirect('/admin/layanan/'.$id)->with('error'. 'Gagal menghapus layanan');
     }
 
     public function buildRawSyarat($array){
@@ -98,5 +122,17 @@ class LayananController extends Controller
             }
         }
         return $syaratRaw;
+    }
+
+    public function changeActivationStatus($id){
+        $layanan = Layanan::where('id', $id)->first();
+        $update = Layanan::where('id', $id)->update([
+            'is_active' => $layanan->is_active == 0 ? 1  : 0
+        ]);
+        $message = $layanan->is_active == 0 ? "Berhasil mengaktifkan layanan" : "Berhasil menonaktifkan layanan";
+        if($update){
+            return redirect('admin/layanan')->with('success', $message);
+        }
+        return redirect('admin/layanan')->with('error', 'Gagal mengubah status aktivasi akun');
     }
 }

@@ -141,7 +141,7 @@
                 </li>
                 <!-- Layanan -->
               <li class="menu-item{{$page == 'layanan' ? ' active' : ''}}">
-                  <a href="index.html" class="menu-link">
+                  <a href="{{url('/admin/layanan')}}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-support"></i>
                     <div data-i18n="Analytics">Layanan</div>
                   </a>
@@ -153,14 +153,14 @@
                   <div data-i18n="User interface">Akun</div>
                 </a>
                 <ul class="menu-sub">
-                  <li class="menu-item{{$page == 'account' ? ' active' : ''}}">
-                      <a href="index.html" class="menu-link">
+                  <li class="menu-item{{$page == 'profile' ? ' active' : ''}}">
+                      <a href="{{url('/admin/profil')}}" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-support"></i>
                         <div data-i18n="Analytics">Profil</div>
                       </a>
                   </li>
                   <li class="menu-item">
-                      <a href="{{url('logout  ')}}" class="menu-link">
+                      <a href="{{url('logout')}}" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-exit"></i>
                         <div data-i18n="Analytics">Logout</div>
                       </a>
@@ -215,6 +215,8 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="https://kit.fontawesome.com/0cf4c39c1c.js" crossorigin="anonymous"></script>
+    @yield('extra-scripts')
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script> --}}
   </body>
 </html>

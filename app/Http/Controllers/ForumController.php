@@ -12,13 +12,11 @@ class ForumController extends Controller
     /**
      * Display a listing of the resource.
      */
-    // public function index(Request $request)
-    // {
-    //     $forum = DB::table('forum')->join('users', 'users.id', 'forum.creator_id')
-    //                ->select('forum.id', 'user.nama', 'replied_to', 'content', 'upvote_count', 'downvote_count', 'view_count', 'status', 'is_ditutup')
-    //                ->whereRaw()
+    public function index(Request $request)
+    {
+        $forumTrending = Forum::orderBy('')
         
-    // }
+    }
 
     /**
      * Show the form for creating a new resource.

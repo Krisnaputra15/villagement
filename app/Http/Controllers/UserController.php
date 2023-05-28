@@ -18,7 +18,7 @@ class UserController extends Controller
     }
 
     public function show($id = null){
-        $user = User::where('id', $id)->first();
+        $user = User::where('id', ($id == null ? Auth::user()->id : $id))->first();
         $redirect = $id != null ? 'admin.user.detail' : (Auth::user()->level == 1 ? 'admin.profile' : 'user.profile');
         $page = $id != null ? 'users' : 'profile';
         return view($redirect, ['user' => $user, 'page' => $page]);
@@ -56,28 +56,30 @@ class UserController extends Controller
     }
 
     public function update(Request $request, $id){
-        $messages = [
-            'required' => 'Kolom :attribute harus diisi',
-            'size' => 'Kolom :attribute harus berjumlah :size digit',
-            'nik.unique' => 'NIK sudah terdaftar di sistem',
-            'email.unique' => 'Email sudah terdaftar di sistem',
-        ];
-        $validator = Validator::make($request->all(), [
-            'nik' => 'required|string|size:16',
-            'nama' => 'required|string',
-            'email' => 'required|email',
-            'dusun' => 'required|string',
-            'rt' => 'required',
-            'rw' => 'required',
-        ], $messages);
-        if($validator->fails()){
-            return redirect('/admin/users/'.$id)->with('error', $validator->messages()->first());
+        $user = User::where('id', $id)->first();
+        if($user->level == 2){
+            $messages = [
+                'required' => 'Kolom :attribute harus diisi',
+                'size' => 'Kolom :attribute harus berjumlah :size digit',
+                'nik.unique' => 'NIK sudah terdaftar di sistem',
+                'email.unique' => 'Email sudah terdaftar di sistem',
+            ];
+            $validator = Validator::make($request->all(), [
+                'nik' => 'required|string|size:16',
+                'nama' => 'required|string',
+                'email' => 'required|email',
+                'dusun' => 'required|string',
+                'rt' => 'required',
+                'rw' => 'required',
+            ], $messages);
+            if($validator->fails()){
+                return redirect('/admin/users/'.$id)->with('error', $validator->messages()->first());
+            }
         }
         $create = User::where('id', $id)->update([
             'nik' => $request->nik,
             'nama' => $request->nama,
             'email' => $request->email,
-            'password' => Hash::make($request->nama),
             'dusun' => $request->dusun,
             'rt' => $request->rt,
             'rw' => $request->rw,

@@ -15,8 +15,11 @@
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Home /</span> {{$page}}</h4>
     <!-- Basic Bootstrap Table -->
     <div class="card">
-      <h5 class="card-header">Table Basic</h5>
+      <h5 class="card-header">Data User <span style="font-weight:bold;">Villagement</span></h5>
       <div class="table text-nowrap">
+        @if(sizeof($user) == 0)
+            <p class="text-center">Belum ada data user</p>
+            @else
         <table class="table">
           <thead>
             <tr>
@@ -29,9 +32,6 @@
             </tr>
           </thead>
           <tbody class="table-border-bottom-0">
-            @if(sizeof($user) == 0)
-            <p class="text-center">Belum ada data user</p>
-            @else
                 @php $i = 1; @endphp
                 @foreach($user as $u)
                 <tr>

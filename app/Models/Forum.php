@@ -49,7 +49,6 @@ class Forum extends Model
 		'content',
 		'replied_to',
 		'upvote_count',
-		'downvote_count',
 		'view_count',
 		'status',
 		'is_ditutup'

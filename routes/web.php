@@ -34,6 +34,15 @@ Route::middleware('authuser')->group(function () {
 
     Route::middleware('authuser')->group(function () {
         Route::get('/admin/home', [AdminController::class, 'index']);
+        Route::get('/admin/profil', [UserController::class, 'show']);
+
+        Route::get('/admin/layanan', [LayananController::class, 'index']);
+        Route::post('/admin/layanan/store', [LayananController::class, 'store']);
+        Route::get('/admin/layanan/{id}', [LayananController::class, 'show']);
+        Route::post('/admin/layanan/{id}/update', [LayananController::class, 'update']);
+        Route::get('/admin/layanan/{id}/delete', [LayananController::class, 'delete']);
+        Route::get('/admin/layanan/{id}/changeactivestatus', [LayananController::class, 'changeActivationStatus']);
+
         Route::get('/admin/users', [UserController::class, 'index']);
         Route::post('/admin/users/store', [UserController::class, 'store']);
         Route::get('/admin/users/{id}', [UserController::class, 'show']);

@@ -12,21 +12,23 @@
             <h4 class="text-center my-auto text-black pt-4 pb-5">Mohon maaf, semua layanan pembuatan surat masih dalam masa pengembangan</h4>
             @else
             <div class="row portfolio-container">
+                @foreach($layanan as $l)
                 <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
                     <div class="portfolio-warp">
                         <div class="portfolio-img">
                             <div class="portfolio-overlay">
                                 <p>
-                                    Lorem ipsum dolor sit amet elit. Phasel nec pretium mi. Curabit facilis ornare velit non. Aliqu metus tortor, auctor id gravi condime, viverra quis sem.
+                                    {{$l->deskripsi}}
                                 </p>
                             </div>
                         </div>
                         <div class="portfolio-text flex-row justify-content-between">
-                            <h6 class="text-center my-auto text-white px-3">Surat Keterangan Pengantar</h6>
+                            <h6 class="text-center my-auto text-white px-3">{{$l->nama_layanan}}</h6>
                             <a class="btn" href="img/portfolio-1.jpg" data-lightbox="portfolio">+</a>
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
             @endif   
             <div class="row">
