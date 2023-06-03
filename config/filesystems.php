@@ -36,6 +36,22 @@ return [
             'throw' => false,
         ],
 
+        'publicPermohonan' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/permohonan'),
+            'url' => env('APP_URL') . '/storage/permohonan',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'publicForum' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/forum'),
+            'url' => env('APP_URL') . '/storage/forum',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

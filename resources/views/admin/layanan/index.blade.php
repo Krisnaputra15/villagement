@@ -18,19 +18,19 @@
             <h5 class="card-header">Data Layanan <span style="font-weight:bold;">Villagement</span></h5>
             <div class="table text-nowrap">
                 @if (sizeof($data) == 0)
-                            <p class="text-center">Belum ada data layanan</p>
-                        @else
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-border-bottom-0">
-                        
+                    <p class="text-center">Belum ada data layanan</p>
+                @else
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+
                             @php $i = 1; @endphp
                             @foreach ($data as $d)
                                 <tr>
@@ -62,8 +62,8 @@
                                 </tr>
                                 @php ++$i @endphp
                             @endforeach
-                        @endif
-                    </tbody>
+                @endif
+                </tbody>
                 </table>
             </div>
         </div>
@@ -85,24 +85,25 @@
                                 <div class="mb-3">
                                     <label for="nama" class="form-label">Nama</label>
                                     <input class="form-control" type="text" name="nama" id="nama"
-                                        placeholder="Nama Layanan"/>
+                                        placeholder="Nama Layanan" />
                                 </div>
                                 <div class="mb-3">
                                     <label for="deskripsi" class="form-label">Deskripsi</label>
-                                    <textarea class="form-control" type="text" name="deskripsi" id="deskripsi"
-                                        placeholder="Deskripsi Permohonan"></textarea>
+                                    <textarea class="form-control" type="text" name="deskripsi" id="deskripsi" placeholder="Deskripsi Permohonan"></textarea>
                                 </div>
                                 <div class="mb-3" id="syaratBox">
                                     <label for="syarat" class="form-label">Syarat</label>
                                     <div class="d-flex" style="gap: 15px">
                                         <input class="form-control" type="text" name="syarat[]" id="syarat"
-                                        placeholder="Syarat Permohonan" required/>
-                                        <button type="button" class="btn btn-success" onclick="add()"><i class="fa-sharp fa-solid fa-plus" style="color: #ffffff;"></i></button>
-                                        <button type="button" class="btn btn-danger" onclick="remove()"><i class="fa-sharp fa-solid fa-minus" style="color: #ffffff;"></i></button>
+                                            placeholder="Syarat Permohonan" required />
+                                        <button type="button" class="btn btn-success" onclick="add()"><i
+                                                class="fa-sharp fa-solid fa-plus" style="color: #ffffff;"></i></button>
+                                        <button type="button" class="btn btn-danger" onclick="remove()"><i
+                                                class="fa-sharp fa-solid fa-minus" style="color: #ffffff;"></i></button>
                                     </div>
-                                    
+
                                 </div>
-                                
+
                             </div>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Save changes</button>
@@ -116,34 +117,33 @@
 @endsection
 
 @section('extra-scripts')
-<script>
-    var formfield = document.getElementById('formLayananSettings');
-    var elementBox = document.getElementById('syaratBox');
-    var elementForm = document.getElementById('syarat');
+    <script>
+        var formfield = document.getElementById('formLayananSettings');
+        var elementBox = document.getElementById('syaratBox');
+        var elementForm = document.getElementById('syarat');
 
-    function add() {
-        var container = document.getElementById("syaratBox");
-        var newDiv = document.createElement("div");
-        newDiv.setAttribute("class", "d-flex");
-        newDiv.style.gap = "15px";
-        newDiv.style.marginTop = "10px";
-        newDiv.innerHTML = `
+        function add() {
+            var container = document.getElementById("syaratBox");
+            var newDiv = document.createElement("div");
+            newDiv.setAttribute("class", "d-flex");
+            newDiv.style.gap = "15px";
+            newDiv.style.marginTop = "10px";
+            newDiv.innerHTML = `
             <input class="form-control" type="text" name="syarat[]" placeholder="Syarat Permohonan" />
             <button type="button" class="btn btn-success" onclick="add()" required><i class="fa-sharp fa-solid fa-plus" style="color: #ffffff;"></i></button>
             <button type="button" class="btn btn-danger" onclick="remove()"><i class="fa-sharp fa-solid fa-minus" style="color: #ffffff;"></i></button>
         `;
-        container.appendChild(newDiv);
-    }
-
-    function remove() {
-        var syaratBox = document.getElementById("syaratBox");
-        var dFlexDivs = syaratBox.getElementsByClassName("d-flex");
-
-        // Check if there are more than one d-flex divs
-        if (dFlexDivs.length > 1) {
-            syaratBox.removeChild(dFlexDivs[dFlexDivs.length - 1]);
+            container.appendChild(newDiv);
         }
-    }
 
-</script>
+        function remove() {
+            var syaratBox = document.getElementById("syaratBox");
+            var dFlexDivs = syaratBox.getElementsByClassName("d-flex");
+
+            // Check if there are more than one d-flex divs
+            if (dFlexDivs.length > 1) {
+                syaratBox.removeChild(dFlexDivs[dFlexDivs.length - 1]);
+            }
+        }
+    </script>
 @endsection

@@ -21,7 +21,7 @@ class LayananController extends Controller
         if(Auth::user()->level == 1){
             return view('admin.layanan.index', ['data' => $data, 'page' => 'layanan']);
         }
-        return view('layanan.index', ['data' => $data, 'page' => 'layanan']);
+        return view('layanan.index', ['layanan' => $data, 'page' => 'layanan']);
     }
 
     /**
@@ -65,7 +65,7 @@ class LayananController extends Controller
             $permohonan = Permohonan::where('layanan_id', $id)->orderBy('status', 'asc')->orderBy('created_at', 'asc')->get();
             return view('admin.layanan.detail', ['layanan' => $data, 'syarat' => $syaratArray, 'permohonan' => $permohonan, 'page' => 'layanan']);
         }
-        return view('admin.layanan.detail', ['layanan' => $data, 'syarat' => $syaratArray, 'page' => 'layanan']);
+        return view('layanan.show', ['layanan' => $data, 'syarat' => $syaratArray, 'page' => 'layanan']);
     }
 
     /**

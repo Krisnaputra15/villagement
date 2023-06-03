@@ -23,8 +23,8 @@
                             </div>
                         </div>
                         <div class="portfolio-text flex-row justify-content-between">
-                            <h6 class="text-center my-auto text-white px-3">{{$l->nama_layanan}}</h6>
-                            <a class="btn" href="img/portfolio-1.jpg" data-lightbox="portfolio">+</a>
+                            <a href="{{url('layanan/'.$l->id)}}"><h6 class="text-center my-auto text-white px-3">{{$l->nama_layanan}}</h6></a>
+                            <a class="btn" href="{{url('layanan/'.$l->id)}}" data-lightbox="portfolio">+</a>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
             @endif   
             <div class="row">
                 <div class="col-12 load-more pt-4 mb-5">
-                    <a class="btn" href="#">Lihat Selengkapnya</a>
+                    <a class="btn" href="{{ url('layanan') }}">Lihat Selengkapnya</a>
                 </div>
             </div>
         </div>
@@ -48,16 +48,19 @@
                 @if(sizeof($forum) == 0)
                 <h4 class="text-center my-auto text-white pt-4 pb-5">Belum ada diskusi yang dibuat</h4>
                 @else
-                <a href="">
+                @foreach($forum as $data)
+                <a href="{{url('forum/'.$data->id)}}">
                     <div class="rounded-top rounded-bottom p-3 mb-4 border-smoke" style="background-color: aliceblue;">
-                        <h5 style="color:#030f27">Judul</h5>
-                        <p style="color:rgb(0, 0, 0)">lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet</p>
+                        <h5 style="color:#030f27">{{$data->judul}}</h5>
+                        <p style="color:rgb(0, 0, 0)">{{$data->content}}</p>
                         <div class="d-flex flex-row" style="font-size: small;">
-                            <p class="me-5" >Views 0</p>
-                            <p class="mx-5">Votes 0</p>
+                            <p class="me-5" >Views {{$data->view_count}}</p>
+                            <p class="mx-5">Votes {{$data->upvote_count}}</p>
                         </div>
+                        
                     </div>
                 </a>
+                @endforeach
                 @endif   
                 <div class="row">
                     <div class="col-12 load-more pt-4 mb-5">

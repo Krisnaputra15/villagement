@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Layanan;
+use App\Models\Permohonan;
 use App\Models\Forum;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -19,9 +20,16 @@ class UserController extends Controller
 
     public function show($id = null){
         $user = User::where('id', ($id == null ? Auth::user()->id : $id))->first();
+        $forum = Forum::where('creator_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        $permohonan = Permohonan::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->orderBy('status', 'desc')->get();
         $redirect = $id != null ? 'admin.user.detail' : (Auth::user()->level == 1 ? 'admin.profile' : 'user.profile');
         $page = $id != null ? 'users' : 'profile';
-        return view($redirect, ['user' => $user, 'page' => $page]);
+        if($id != null){
+            return view($redirect, ['user' => $user, 'page' => $page]);
+        } else {
+            return view($redirect, ['user' => $user, 'forum' => $forum , 'permohonan' => $permohonan , 'page' => $page]);
+        }
+        
     }
 
     public function store(Request $request){

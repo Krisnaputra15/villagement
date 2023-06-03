@@ -287,29 +287,7 @@
     
     
                 <!-- Video Start -->
-                <div class="video wow fadeIn" data-wow-delay="0.1s">
-                    <div class="container">
-                        <button type="button" class="btn-play" data-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
-                            <span></span>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>        
-                                <!-- 16:9 aspect ratio -->
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
                 <!-- Video End -->
     
     
@@ -403,7 +381,7 @@
                             <h2>You May Ask</h2>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="">
                                 <div id="accordion-1">
                                     <div class="card wow fadeInLeft" data-wow-delay="0.1s">
                                         <div class="card-header">
@@ -467,70 +445,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div id="accordion-2">
-                                    <div class="card wow fadeInRight" data-wow-delay="0.1s">
-                                        <div class="card-header">
-                                            <a class="card-link collapsed" data-toggle="collapse" href="#collapseSix">
-                                                Lorem ipsum dolor sit amet?
-                                            </a>
-                                        </div>
-                                        <div id="collapseSix" class="collapse" data-parent="#accordion-2">
-                                            <div class="card-body">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card wow fadeInRight" data-wow-delay="0.2s">
-                                        <div class="card-header">
-                                            <a class="card-link collapsed" data-toggle="collapse" href="#collapseSeven">
-                                                Lorem ipsum dolor sit amet?
-                                            </a>
-                                        </div>
-                                        <div id="collapseSeven" class="collapse" data-parent="#accordion-2">
-                                            <div class="card-body">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card wow fadeInRight" data-wow-delay="0.3s">
-                                        <div class="card-header">
-                                            <a class="card-link collapsed" data-toggle="collapse" href="#collapseEight">
-                                                Lorem ipsum dolor sit amet?
-                                            </a>
-                                        </div>
-                                        <div id="collapseEight" class="collapse" data-parent="#accordion-2">
-                                            <div class="card-body">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card wow fadeInRight" data-wow-delay="0.4s">
-                                        <div class="card-header">
-                                            <a class="card-link collapsed" data-toggle="collapse" href="#collapseNine">
-                                                Lorem ipsum dolor sit amet?
-                                            </a>
-                                        </div>
-                                        <div id="collapseNine" class="collapse" data-parent="#accordion-2">
-                                            <div class="card-body">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card wow fadeInRight" data-wow-delay="0.5s">
-                                        <div class="card-header">
-                                            <a class="card-link collapsed" data-toggle="collapse" href="#collapseTen">
-                                                Lorem ipsum dolor sit amet?
-                                            </a>
-                                        </div>
-                                        <div id="collapseTen" class="collapse" data-parent="#accordion-2">
-                                            <div class="card-body">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -538,143 +452,6 @@
     
     
                 <!-- Testimonial Start -->
-                <div class="testimonial wow fadeIn" data-wow-delay="0.1s">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="testimonial-slider-nav">
-                                    <div class="slider-nav"><img src="img/testimonial-1.jpg" alt="Testimonial"></div>
-                                    <div class="slider-nav"><img src="img/testimonial-2.jpg" alt="Testimonial"></div>
-                                    <div class="slider-nav"><img src="img/testimonial-3.jpg" alt="Testimonial"></div>
-                                    <div class="slider-nav"><img src="img/testimonial-4.jpg" alt="Testimonial"></div>
-                                    <div class="slider-nav"><img src="img/testimonial-1.jpg" alt="Testimonial"></div>
-                                    <div class="slider-nav"><img src="img/testimonial-2.jpg" alt="Testimonial"></div>
-                                    <div class="slider-nav"><img src="img/testimonial-3.jpg" alt="Testimonial"></div>
-                                    <div class="slider-nav"><img src="img/testimonial-4.jpg" alt="Testimonial"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="testimonial-slider">
-                                    <div class="slider-item">
-                                        <h3>Customer Name</h3>
-                                        <h4>profession</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
-                                    </div>
-                                    <div class="slider-item">
-                                        <h3>Customer Name</h3>
-                                        <h4>profession</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
-                                    </div>
-                                    <div class="slider-item">
-                                        <h3>Customer Name</h3>
-                                        <h4>profession</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
-                                    </div>
-                                    <div class="slider-item">
-                                        <h3>Customer Name</h3>
-                                        <h4>profession</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
-                                    </div>
-                                    <div class="slider-item">
-                                        <h3>Customer Name</h3>
-                                        <h4>profession</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
-                                    </div>
-                                    <div class="slider-item">
-                                        <h3>Customer Name</h3>
-                                        <h4>profession</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
-                                    </div>
-                                    <div class="slider-item">
-                                        <h3>Customer Name</h3>
-                                        <h4>profession</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
-                                    </div>
-                                    <div class="slider-item">
-                                        <h3>Customer Name</h3>
-                                        <h4>profession</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Testimonial End -->
-    
-    
-                <!-- Blog Start -->
-                <div class="blog">
-                    <div class="container">
-                        <div class="section-header text-center">
-                            <p>Latest Blog</p>
-                            <h2>Latest From Our Blog</h2>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                                <div class="blog-item">
-                                    <div class="blog-img">
-                                        <img src="img/blog-1.jpg" alt="Image">
-                                    </div>
-                                    <div class="blog-title">
-                                        <h3>Lorem ipsum dolor sit</h3>
-                                        <a class="btn" href="">+</a>
-                                    </div>
-                                    <div class="blog-meta">
-                                        <p>By<a href="">Admin</a></p>
-                                        <p>In<a href="">Construction</a></p>
-                                    </div>
-                                    <div class="blog-text">
-                                        <p>
-                                            Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 wow fadeInUp">
-                                <div class="blog-item">
-                                    <div class="blog-img">
-                                        <img src="img/blog-2.jpg" alt="Image">
-                                    </div>
-                                    <div class="blog-title">
-                                        <h3>Lorem ipsum dolor sit</h3>
-                                        <a class="btn" href="">+</a>
-                                    </div>
-                                    <div class="blog-meta">
-                                        <p>By<a href="">Admin</a></p>
-                                        <p>In<a href="">Construction</a></p>
-                                    </div>
-                                    <div class="blog-text">
-                                        <p>
-                                            Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                                <div class="blog-item">
-                                    <div class="blog-img">
-                                        <img src="img/blog-3.jpg" alt="Image">
-                                    </div>
-                                    <div class="blog-title">
-                                        <h3>Lorem ipsum dolor sit</h3>
-                                        <a class="btn" href="">+</a>
-                                    </div>
-                                    <div class="blog-meta">
-                                        <p>By<a href="">Admin</a></p>
-                                        <p>In<a href="">Construction</a></p>
-                                    </div>
-                                    <div class="blog-text">
-                                        <p>
-                                            Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <!-- Blog End -->
 @endsection

@@ -254,3 +254,8 @@ footer a {
     color: #3c97bf;
     text-decoration: none;
 }
+
+.dropdown-item:hover{
+	transition: 0.3s;
+	background-color: #333;
+}

@@ -13,4 +13,5 @@ class BaseController extends Controller
             return Redirect::to('/');
         }
     }
+
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\LayananController;
+use App\Http\Controllers\PermohonanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 
@@ -31,6 +32,16 @@ Route::get('/auth/google/callback', [GoogleAuthController::class, 'GoogleCallbac
 Route::middleware('authuser')->group(function () {
     Route::get('/user/fillform', [AuthController::class, 'afterRegister']);
     Route::post('/user/fillform/submit', [AuthController::class, 'updateUserInfo']);
+    Route::get('/user/profil', [UserController::class, 'show']);
+
+    Route::get('/forum', [ForumController::class, 'index']);
+    Route::post('/forum/store', [ForumController::class, 'store']);
+    Route::get('/forum/{id}', [ForumController::class, 'show']);
+    Route::post('/forum/{id}/comment', [ForumController::class, 'store']);
+    Route::get('/forum/{id}/delete', [ForumController::class, 'destroy']);
+    Route::get('/layanan', [LayananController::class, 'index']);
+    Route::get('/layanan/{id}', [LayananController::class, 'show']);
+    Route::post('/layanan/{id}/buatpengajuan', [PermohonanController::class, 'store']);
 
     Route::middleware('authuser')->group(function () {
         Route::get('/admin/home', [AdminController::class, 'index']);
@@ -50,7 +61,6 @@ Route::middleware('authuser')->group(function () {
         Route::post('/admin/users/{id}/update', [UserController::class, 'update']);
         Route::get('/admin/users/{id}/changeactivestatus', [UserController::class, 'changeActivationStatus']);
     });
-    
 });
 
 //user route
@@ -60,7 +70,3 @@ Route::get('/logout', [AuthController::class, 'logout']);
 Route::get('/admin/login', [AuthController::class, 'indexAdmin']);
 Route::post('/admin/login/process', [AuthController::class, 'adminLogin']);
 Route::post('/admin/register/process', [AuthController::class, 'adminAdd']);
-
-
-
-
