@@ -68,6 +68,9 @@ class PermohonanController extends BaseController
     public function show(string $id)
     {
         $data = Permohonan::find($id);
+        if(Auth::user()->level == 1){
+            return view('admin.layanan.permohonanDetail', ['data' => $data, 'page' => 'layanan']);
+        }
         return view('permohonan.show', ['data' => $data]);
     }
 
@@ -108,6 +111,26 @@ class PermohonanController extends BaseController
             }
         }
         return redirect()->back()->with('error', 'Gagal menghapus permohonan surat');
+    }
+
+    public function changePengajuanStatus(Request $request, $id){
+        $validator = Validator::make($request->all(), [
+            'alasan' => 'nullable|string',
+            'alasan_kustom' => 'nullable|string'
+        ]);
+        if($validator->fails()){
+            return redirect('admin/permohonan/'.$id)->with('error', $validator->errors()->first());
+        }
+
+        $update = Permohonan::where('id', $id)->update([
+            'status' => strlen($request->alasan) == 0 ? 'diterima' : 'ditolak',
+            'declined_reason' => strlen($request->alasan) == 0 ? null : ($request->alasan == 'kustom' ? $request->alasan_kustom : $request->alasan),
+        ]);
+
+        if($update){
+            return redirect('admin/permohonan/'.$id)->with('success', 'Berhasil mengubah status penerimaan pengajuan surat');
+        }
+        return redirect('admin/permohonan/' . $id)->with('error', 'Gagal mengubah status penerimaan pengajuan surat');
     }
 
     public function uploadFile($items, Permohonan $permohonan)

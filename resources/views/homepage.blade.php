@@ -4,6 +4,16 @@
 <div class="wow fadeUp">       
     <div class="portfolio">
         <div class="container">
+             @if (session('error'))
+            <div class="response error">
+                <p class="text-center text-white my-auto">{{ session('error') }}</p>
+            </div>
+        @endif
+        @if (session('success'))
+            <div class="response success">
+                <p class="text-center text-white my-auto">{{ session('success') }}</p>
+            </div>
+        @endif
             <div class="section-header text-center">
                 <h2>Jenis Surat</h2>
                 <p>Jenis Pelayanan Administrasi Yang Dapat Dilayani</p>

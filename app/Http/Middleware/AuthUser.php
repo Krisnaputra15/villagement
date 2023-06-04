@@ -19,6 +19,6 @@ class AuthUser
         if(Auth::check()){
             return $next($request);
         }
-        return redirect('/')->with('error', 'Anda harus login terlebih dahulu');
+        return redirect('/login')->with('error', 'Anda harus login terlebih dahulu');
     }
 }

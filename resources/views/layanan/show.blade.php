@@ -2,7 +2,16 @@
 
 @section('content')
     <div class="container">
-       c
+       @if(session('error'))
+    <div class="response error">
+        <p class="text-center text-white my-auto">{{session('error')}}</p>
+    </div>
+    @endif
+    @if(session('success'))
+    <div class="response success">
+        <p class="text-center text-white my-auto">{{session('success')}}</p>
+    </div>
+    @endif
         <div class="d-flex">
             <div class="border-box container p-4 m-3 " style="border-radius: 20px;width: 70%;">
                 <h2>{{ $layanan->nama_layanan }}</h2>

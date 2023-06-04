@@ -180,26 +180,28 @@
 
                             <div class="card-body p-0">
                                 <p class="mb-4 pt-3 ps-3">Forum Permasalahan</p>
-                                @if (sizeof($forum) != 0)
+                                @if (sizeof($forum) == 0)
                                     <b>
                                         <p class="text-center">Anda belum membuat forum apapun</p>
                                     </b>
                                 @else
-                                    <a href="">
+                                @php $i = 1 @endphp
+                                @foreach($forum as $data)
+                                    <a href="{{url('forum/'.$data->id)}}">
                                         <div class="contents py-3">
                                             <div class="px-3">
                                                 <div class="d-flex justify-content-between">
                                                     <div>
-                                                        <p>#1 Perbaikan jalan desa</p>
+                                                        <p>#{{$i}} {{$data->judul}}</p>
                                                         <div class="d-flex flex-row" style="font-size: small; ">
                                                             <p class="ms-2 mb-0"
                                                                 style="font-size: 12px; color: #807d7d!important;">
-                                                                <b>0</b>
+                                                                <b>{{$data->view_count}}</b>
                                                                 Views
                                                             </p>
                                                             <p class="ms-4 mb-0"
                                                                 style="font-size: 12px; color: #807d7d!important;">
-                                                                <b>0</b>
+                                                                <b>{{$data->upvote_count}}</b>
                                                                 Votes
                                                             </p>
                                                         </div>
@@ -214,6 +216,7 @@
                                             </div>
                                         </div>
                                     </a>
+                                @endforeach
                                 @endif
                                 {{-- <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
                                 <div class="progress rounded mb-2" style="height: 5px;">

@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('forum_votes', function (Blueprint $table) {
-            $table->id();
+        Schema::create('data_desa', function (Blueprint $table) {
+            $table->ulid('id')->primary();
+            $table->string('nama_desa');
+            $table->string('alamat_desa');
+            $table->string('nama_kepala_desa');
             $table->timestamps();
         });
     }
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('forum_votes');
+        Schema::dropIfExists('data_desa');
     }
 };

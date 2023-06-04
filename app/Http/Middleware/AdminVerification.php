@@ -16,7 +16,7 @@ class AdminVerification
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->level == 1){
+        if(Auth::check() && Auth::user()->level === '1'){
             return $next($request);
         } else {
             return redirect('/')->with('error', 'Anda tidak memiliki akses untuk mengakses halaman tersebut');

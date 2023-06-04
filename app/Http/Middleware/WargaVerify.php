@@ -16,10 +16,10 @@ class WargaVerify
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->level == 2){
+        if(Auth::check() && Auth::user()->level === '2'){
             return $next($request);
         } else {
-            return redirect('/')->with('error', 'Anda tidak memiliki akses untuk mengakses halaman tersebut');
+            return redirect('/admin/home')->with('error', 'Anda tidak memiliki akses untuk mengakses halaman tersebut');
         }
     }
 }

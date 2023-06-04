@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('forum_vote', function (Blueprint $table) {
+        Schema::create('forum_views', function (Blueprint $table) {
             $table->ulid('id')->primary();
             $table->char('user_id', 36);
-            $table->char('forum_id', 26);
+            $table->char('forum_id', 36);
             $table->timestamps();
             $table->foreign('forum_id')->references('id')->on('forum')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('forum_vote');
+        Schema::dropIfExists('forum_views');
     }
 };

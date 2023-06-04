@@ -67,7 +67,7 @@
           <!-- /Account -->
         </div>
         <div class="card mb-4">
-          <h5 class="card-header">Data Layanan <span style="font-weight:bold;">Villagement</span></h5>
+          <h5 class="card-header">Data Pengajuan Permohonan Surat</h5>
           <div class="table text-nowrap">
               @if (sizeof($permohonan) == 0)
                           <p class="text-center">Belum ada permohonan yang masuk untuk layanan ini</p>
@@ -94,7 +94,7 @@
                                   <td>{{ $d->user->nama }}</td>
                                   <td>{{ $d->created_at }}</td>
                                   <td><span
-                                          class="badge bg-label-{{ $d->status == 1 ? 'warning' : ($d->status == 2 ? 'danger' : 'success') }} me-1">{{ $d->status == 1 ? 'butuh verifikasi' : ($d->status == 2 ? 'Diterima' : 'Ditolak') }}</span>
+                                          class="badge bg-label-{{ $d->status == 'proses' ? 'warning' : ($d->status == 'diterima' ? 'danger' : 'success') }} me-1">{{ $d->status == 1 ? 'butuh verifikasi' : ($d->status == 'proses' ? 'Proses' : ($d->status == 'diterima' ? 'Diterima' : 'Ditolak')) }}</span>
                                   </td>
                                   <td>{{ strlen($d->declined_reason) == 0 ? "-" : $d->declined_reason }}</td>
                                   <td>

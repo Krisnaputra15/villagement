@@ -20,7 +20,7 @@ class UserController extends Controller
 
     public function show($id = null){
         $user = User::where('id', ($id == null ? Auth::user()->id : $id))->first();
-        $forum = Forum::where('creator_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        $forum = Forum::where('creator_id', Auth::user()->id)->where('replied_to', null)->orderBy('created_at', 'desc')->get();
         $permohonan = Permohonan::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->orderBy('status', 'desc')->get();
         $redirect = $id != null ? 'admin.user.detail' : (Auth::user()->level == 1 ? 'admin.profile' : 'user.profile');
         $page = $id != null ? 'users' : 'profile';
@@ -89,8 +89,18 @@ class UserController extends Controller
             'nama' => $request->nama,
             'email' => $request->email,
             'dusun' => $request->dusun,
+            'password' => $user->level == 2 ? Hash::make($request->nama) : $user->password, 
             'rt' => $request->rt,
             'rw' => $request->rw,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'desa' => $request->desa,
+            'kecamatan' => $request->kecamatan,
+            'agama' => $request->agama,
+            'status_kawin' => $request->status_kawin,
+            'kewarganegaraan' => $request->kewarganegaraan,
+            'pekerjaan' => $request->pekerjaan,
             'level' => $request->level
         ]);
         return redirect('/admin/users/'.$id)->with('success', 'Berhasil memperbarui data user');

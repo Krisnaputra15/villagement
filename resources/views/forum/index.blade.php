@@ -45,7 +45,7 @@
                                                     <div class="mb-3" id="syaratBox">
                                                         <div class="d-flex" style="gap: 15px">
                                                             <input class="form-control" type="file" name="gambar[]"
-                                                                id="syarat" placeholder="Syarat Permohonan" required />
+                                                                id="syarat" placeholder="Syarat Permohonan" />
                                                             <button type="button" class="btn btn-success"
                                                                 onclick="add()"><i class="fa-sharp fa-solid fa-plus"
                                                                     style="color: #ffffff;"></i></button>
@@ -124,24 +124,45 @@
                 @foreach($forumTerbaru as $data)
                     <a href="{{url('forum/'.$data->id)}}">
                         <div class="contents py-2 px-4">
-                            <div class="rounded-top rounded-bottom mt-3 mb-4">
-                                <div class="d-flex flex-row profil mb-3">
-                                    <img class="rounded-circle me-3 my-auto" src="{{$data->user->picture_url}}"
+                            <div class="rounded-top rounded-bottom mt-4 mb-4">
+                                <div class="d-flex flex-row justify-content-between profil mb-3">
+                                    <div class="d-flex">
+                                        <img class="rounded-circle me-3 my-auto" src="{{$data->user->picture_url}}"
                                         style="width: 2em; height: 2em;" alt="">
-                                    <div class="d-flex flex-column">
-                                        <p class="mb-1" style="color: #222; font-weight: 600;">{{$data->judul}}</p>
-                                        <p class="my-auto" style="font-size: 12px;">{{$data->user->nama}}</p>
+                                        <div class="d-flex flex-column">
+                                            <p class="mb-1" style="color: #222; font-weight: 600;">{{$data->judul}}</p>
+                                            <p class="my-auto" style="font-size: 12px;">{{$data->user->nama}}</p>
+                                        </div>
                                     </div>
+                                    {{-- @if(auth()->user()->id == $data->user->id)
+                                    <div class="dropdown">
+                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                                data-bs-toggle="dropdown" data-bs-target="#detail">
+                                                                <i class="bx bx-dots-vertical-rounded"></i>
+                                                            </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="{{url('forum/'.$data->id).'/hapus'}}">Hapus Forum</a></li>
+                                        </ul>
+                                    </div>
+                                    @endif --}}
                                 </div>
+                                @if(sizeof($data->forum_media) != 0)
                                 <div class="image-container">
-                                    @foreach($data->forum_media as $media)
-                                        <img src="{{asset('storage/forum/'.$media['nama_file'])}}" alt="Image 1" />
+                                    @foreach ($data->forum_media as $media)
+                                        <img src="{{ asset('storage/forum/' . $media['nama_file']) }}" alt="Image 1" />
                                     @endforeach
                                 </div>
-                                <p style="font-size: 14px; color: #222;">{{$data->content}}
+                                @endif
+                                <p style="font-size: 14px; color: #222; margin: 1.5em 0 1em 5px" >{{$data->content}}
                                 </p>
+                                
+                            </div>
+                            <div class="pb-3 d-flex flex-row">
+                                <a href="{{url('forum/'.$data->id.'/upvote')}}" class="ms-2 me-4"><i class="fa-regular fa-thumbs-up"></i></a>
+                                <a href="{{url('forum/'.$data->id)}}" class="me-4"><i class="fa-regular fa-comment"></i></a>
                             </div>
                             <div class="d-flex flex-row justify-content-between" style="font-size: small; ">
+                                
                                 <div class="d-flex">
                                     <p class="ms-2 mb-0" style="font-size: 12px; color: #807d7d!important;"><b>{{$data->view_count}}</b> Views
                                     </p>
@@ -153,8 +174,9 @@
                             </div>
                         </div>
                     </a>
-                    @endforeach
                     <hr class="solid m-0">
+                    @endforeach
+                    
                 @endif
             </div>
         </div>

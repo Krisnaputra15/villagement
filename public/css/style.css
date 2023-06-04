@@ -2309,3 +2309,7 @@ a:focus {
     object-fit: cover;
     object-position: initial;
 }
+
+.dropdown-toggle::after{
+    content: none;
+}

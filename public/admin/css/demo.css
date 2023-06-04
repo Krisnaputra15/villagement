@@ -130,3 +130,19 @@
 .bg-black{
   background: #121518 !important;
 }
+
+.image-container {
+  margin: 1em 0;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  /* Adjust the max-width as needed */
+}
+
+.image-container img {
+  width: 13em;
+  /* Adjust the percentage and margin as needed */
+  margin: 5px;
+  object-fit: cover;
+  object-position: initial;
+}

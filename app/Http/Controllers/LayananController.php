@@ -108,9 +108,9 @@ class LayananController extends Controller
     {
         $delete = Layanan::where('id', $id)->delete();
         if($delete){
-            return redirect('/admin/layanan')->with('success'. 'Berhasil memnghapus layanan');
+            return redirect('/admin/layanan')->with('success', 'Berhasil memnghapus layanan');
         }
-        return redirect('/admin/layanan/'.$id)->with('error'. 'Gagal menghapus layanan');
+        return redirect('/admin/layanan/'.$id)->with('error', 'Gagal menghapus layanan');
     }
 
     public function buildRawSyarat($array){

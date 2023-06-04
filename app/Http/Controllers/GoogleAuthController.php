@@ -24,7 +24,7 @@ class GoogleAuthController extends Controller
             if(strlen($findUser->nik) == 0){
                 return redirect('/user/fillform');
             }
-            return redirect('/');
+            return redirect('/homepage');
         } else {
             $create = User::create([
                 'google_id' => $user->getId(),

@@ -30,29 +30,45 @@ Route::get('/auth/google', [GoogleAuthController::class, 'redirectToGoogle']);
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'GoogleCallback']);
 
 Route::middleware('authuser')->group(function () {
-    Route::get('/user/fillform', [AuthController::class, 'afterRegister']);
-    Route::post('/user/fillform/submit', [AuthController::class, 'updateUserInfo']);
+    Route::get('/homepage', [HomeController::class, 'index']);
     Route::get('/user/profil', [UserController::class, 'show']);
 
-    Route::get('/forum', [ForumController::class, 'index']);
-    Route::post('/forum/store', [ForumController::class, 'store']);
-    Route::get('/forum/{id}', [ForumController::class, 'show']);
-    Route::post('/forum/{id}/comment', [ForumController::class, 'store']);
-    Route::get('/forum/{id}/delete', [ForumController::class, 'destroy']);
-    Route::get('/layanan', [LayananController::class, 'index']);
-    Route::get('/layanan/{id}', [LayananController::class, 'show']);
-    Route::post('/layanan/{id}/buatpengajuan', [PermohonanController::class, 'store']);
+    Route::middleware('warga.verify')->group(function () {
+        Route::get('/user/fillform', [AuthController::class, 'afterRegister']);
+        Route::post('/user/fillform/submit', [AuthController::class, 'updateUserInfo']);
 
-    Route::middleware('authuser')->group(function () {
+        Route::get('/forum', [ForumController::class, 'index']);
+        Route::post('/forum/store', [ForumController::class, 'store']);
+        Route::get('/forum/{id}', [ForumController::class, 'show']);
+        Route::get('/forum/{id}/upvote', [ForumController::class, 'upvote']);
+        Route::post('/forum/{id}/comment', [ForumController::class, 'store']);
+        Route::get('/forum/{id}/hapus', [ForumController::class, 'destroy']);
+        Route::get('/layanan', [LayananController::class, 'index']);
+        Route::get('/layanan/{id}', [LayananController::class, 'show']);
+        Route::post('/layanan/{id}/buatpengajuan', [PermohonanController::class, 'store']);
+    });
+
+    Route::middleware('admin.verify')->group(function () {
         Route::get('/admin/home', [AdminController::class, 'index']);
         Route::get('/admin/profil', [UserController::class, 'show']);
+
+        Route::get('/admin/forums', [ForumController::class, 'index']);
+        Route::get('/admin/forums/{id}', [ForumController::class, 'show']);
+        Route::post('/admin/forums/{id}/respon', [ForumController::class, 'store']);
+        Route::post('/admin/forums/{id}/ubahstatus', [ForumController::class, 'changeStatus']);
+        Route::get('/admin/forums/{id}/buka', [ForumController::class, 'changeForumOpen']);
+        Route::get('/admin/forums/{id}/tutup', [ForumController::class, 'changeForumOpen']);
 
         Route::get('/admin/layanan', [LayananController::class, 'index']);
         Route::post('/admin/layanan/store', [LayananController::class, 'store']);
         Route::get('/admin/layanan/{id}', [LayananController::class, 'show']);
         Route::post('/admin/layanan/{id}/update', [LayananController::class, 'update']);
-        Route::get('/admin/layanan/{id}/delete', [LayananController::class, 'delete']);
+        Route::get('/admin/layanan/{id}/delete', [LayananController::class, 'destroy']);
         Route::get('/admin/layanan/{id}/changeactivestatus', [LayananController::class, 'changeActivationStatus']);
+
+        Route::get('/admin/permohonan/{id}', [PermohonanController::class, 'show']);
+        Route::get('/admin/permohonan/{id}/terima', [PermohonanController::class, 'changePengajuanStatus']);
+        Route::post('/admin/permohonan/{id}/tolak', [PermohonanController::class, 'changePengajuanStatus']);
 
         Route::get('/admin/users', [UserController::class, 'index']);
         Route::post('/admin/users/store', [UserController::class, 'store']);

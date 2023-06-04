@@ -4,6 +4,16 @@
 <!-- Content -->
 
 <div class="container-xxl flex-grow-1 container-p-y">
+   @if(session('error'))
+    <div class="response error">
+        <p class="text-center text-white my-auto">{{session('error')}}</p>
+    </div>
+    @endif
+    @if(session('success'))
+    <div class="response success">
+        <p class="text-center text-white my-auto">{{session('success')}}</p>
+    </div>
+    @endif
     <div class="">
       <div class="mb-4">
         <div class="card">
