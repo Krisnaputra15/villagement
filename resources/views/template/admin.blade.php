@@ -146,6 +146,12 @@
                     <div data-i18n="Analytics">Layanan</div>
                   </a>
                 </li>
+                <li class="menu-item{{$page == 'faq' ? ' active' : ''}}">
+                  <a href="{{url('/admin/faqs')}}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-question-mark"></i>
+                    <div data-i18n="Analytics">FAQ</div>
+                  </a>
+                </li>
               <!-- User interface -->
               <li class="menu-item">
                 <a href="javascript:void(0)" class="menu-link menu-toggle">

@@ -10,6 +10,7 @@ use App\Http\Controllers\LayananController;
 use App\Http\Controllers\PermohonanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FaqController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,8 @@ Route::get('/login', [AuthController::class, 'index']);
 Route::get('/auth/google', [GoogleAuthController::class, 'redirectToGoogle']);
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'GoogleCallback']);
 
+Route::get('/faq', [FaqController::class, 'index']);
+
 Route::middleware('authuser')->group(function () {
     Route::get('/homepage', [HomeController::class, 'index']);
     Route::get('/user/profil', [UserController::class, 'show']);
@@ -46,6 +49,8 @@ Route::middleware('authuser')->group(function () {
         Route::get('/layanan', [LayananController::class, 'index']);
         Route::get('/layanan/{id}', [LayananController::class, 'show']);
         Route::post('/layanan/{id}/buatpengajuan', [PermohonanController::class, 'store']);
+        Route::get('/permohonan/{id}/getpdf', [PermohonanController::class, 'generatePDF']);
+        Route::get('/permohonan/{id}/openpdf', [PermohonanController::class, 'openSurat']);
     });
 
     Route::middleware('admin.verify')->group(function () {
@@ -76,6 +81,13 @@ Route::middleware('authuser')->group(function () {
         Route::get('/admin/users/{id}/delete', [UserController::class, 'delete']);
         Route::post('/admin/users/{id}/update', [UserController::class, 'update']);
         Route::get('/admin/users/{id}/changeactivestatus', [UserController::class, 'changeActivationStatus']);
+
+        Route::get('/admin/faqs', [FaqController::class, 'index']);
+        Route::post('/admin/faqs/store', [FaqController::class, 'store']);
+        Route::get('/admin/faqs/{id}', [FaqController::class, 'show']);
+        Route::post('/admin/faqs/{id}/update', [FaqController::class, 'update']);
+        Route::post('/admin/faqs/{id}/delete', [FaqController::class, 'destroy']);
+        Route::get('/admin/faqs/{id}/changeactivestatus', [FaqController::class, 'changeActivationStatus']);
     });
 });
 

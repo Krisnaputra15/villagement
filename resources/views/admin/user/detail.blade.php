@@ -115,7 +115,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="rw" class="form-label">Status Perkawinan</label>
-                                    <select id="status" name="alasan" class="select2 form-select" required>
+                                    <select id="status" name="status_kawin" class="select2 form-select" required>
                                         @if ($user->status_kawin == 'belum')
                                             <option value="belum" selected>Belum Kawin</option>
                                             <option value="pernah">Pernah Kawin</option>

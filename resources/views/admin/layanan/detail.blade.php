@@ -35,6 +35,11 @@
                             placeholder="Deskripsi Permohonan">{{$layanan->deskripsi}}</textarea>
                     </div>
                     <div class="mb-3">
+                        <label for="deskripsi" class="form-label">Template</label>
+                        <textarea class="form-control" type="text" name="template" id="template"
+                            placeholder="Deskripsi Permohonan">{{$layanan->template}}</textarea>
+                    </div>
+                    <div class="mb-3">
                       <label for="status" class="form-label">Status Layanan</label>
                       <select id="status" name="status" class="select2 form-select">
                         @if($layanan->is_active == 0)
@@ -59,7 +64,8 @@
                     </div>
                   </div>
               <div class="mt-2">
-                <button type="submit" class="btn btn-primary me-2">Simpan Perubahan</button>
+                <button type="submit" class="btn btn-primary me-2"
+                >Simpan Perubahan</button>
                 <button type="reset" class="btn btn-outline-secondary" onclick="window.location.reload()">Cancel</button>
               </div>
             </form>

@@ -39,7 +39,8 @@ class LayananController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string',
-            'syarat' => 'required'
+            'syarat' => 'required',
+            'template' => 'nullable|string'
         ]);
         if($validator->fails()){
             return redirect('/admin/layanan')->with('error', $validator->messages()->first());
@@ -49,6 +50,7 @@ class LayananController extends Controller
         $create = Layanan::create([
             'nama_layanan' => $request->nama,
             'deskripsi' => $request->deskripsi,
+            'template' => $request->template,
             'syarat' => $syaratRaw
         ]);
         return redirect('admin/layanan')->with('success', 'Berhasil menambahkan data layanan');
@@ -85,6 +87,7 @@ class LayananController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string',
             'syarat' => 'required',
+            'template' => 'nullable|string',
             'status' => 'required|numeric'
         ]);
         if($validator->fails()){
@@ -95,6 +98,7 @@ class LayananController extends Controller
         $update = Layanan::where('id', $id)->update([
             'nama_layanan' => $request->nama,
             'deskripsi' => $request->deskripsi,
+            'template' => $request->template,
             'is_active' => $request->status,
             'syarat' => $syaratRaw
         ]);

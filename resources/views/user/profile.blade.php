@@ -125,6 +125,7 @@
                                                 <th scope="col">No</th>
                                                 <th scope="col">Jenis Pengajuan</th>
                                                 <th scope="col">Status</th>
+                                                <th scope="col">Alasan Penolakan</th>
                                                 <th scope="col">Aksi</th>
                                             </tr>
                                         </thead>
@@ -139,10 +140,11 @@
                                                     </td>
                                                     <td>
                                                         <p class="mb-1 text-center my-auto" style="font-size: .88rem;">
-                                                            <button disa
+                                                            <button disabled
                                                                 class="rounded-pill badge border-0 text-dark bg-{{ $item->status == 'proses' ? 'warning' : ($item->status == 'diterima' ? 'success' : 'danger') }}">{{ $item->status }}</button>
                                                         </p>
                                                     </td>
+                                                    <td>{{strlen($item->declined_reason) == 0 ? '-' : $item->declined_reason}}</td>
                                                     <td>
                                                         <div class="dropdown">
                                                             <button type="button"
@@ -153,9 +155,17 @@
                                                             <div class="dropdown-menu" id="detail">
                                                                 <a class="dropdown-item" href=""><i
                                                                         class="bx bx-detail me-2"></i> Lihat detail</a>
-                                                                {{-- <a class="dropdown-item" href="javascript:void(0);"
-                            ><i class="bx bx-edit-alt me-2"></i> Edit</a
-                          > --}}
+                                                                @if ($item->status == 'diterima')
+                                                                    <a class="dropdown-item"
+                                                                        href="{{ url('permohonan/' . $item->id . '/getpdf') }}"><i
+                                                                            class='bx bxs-cloud-download me-2'></i> Download
+                                                                        Surat</a>
+                                                                         <a class="dropdown-item"
+                                                                        href="{{ url('permohonan/' . $item->id . '/openpdf') }}"><i
+                                                                            class='bx bxs-cloud-download me-2'></i> Buka
+                                                                        Surat</a>
+                                                                @endif
+
                                                                 <a class="dropdown-item" href=""><i
                                                                         class="bx "></i></a>
                                                             </div>
@@ -185,38 +195,38 @@
                                         <p class="text-center">Anda belum membuat forum apapun</p>
                                     </b>
                                 @else
-                                @php $i = 1 @endphp
-                                @foreach($forum as $data)
-                                    <a href="{{url('forum/'.$data->id)}}">
-                                        <div class="contents py-3">
-                                            <div class="px-3">
-                                                <div class="d-flex justify-content-between">
-                                                    <div>
-                                                        <p>#{{$i}} {{$data->judul}}</p>
-                                                        <div class="d-flex flex-row" style="font-size: small; ">
-                                                            <p class="ms-2 mb-0"
-                                                                style="font-size: 12px; color: #807d7d!important;">
-                                                                <b>{{$data->view_count}}</b>
-                                                                Views
-                                                            </p>
-                                                            <p class="ms-4 mb-0"
-                                                                style="font-size: 12px; color: #807d7d!important;">
-                                                                <b>{{$data->upvote_count}}</b>
-                                                                Votes
-                                                            </p>
+                                    @php $i = 1 @endphp
+                                    @foreach ($forum as $data)
+                                        <a href="{{ url('forum/' . $data->id) }}">
+                                            <div class="contents py-3">
+                                                <div class="px-3">
+                                                    <div class="d-flex justify-content-between">
+                                                        <div>
+                                                            <p>#{{ $i }} {{ $data->judul }}</p>
+                                                            <div class="d-flex flex-row" style="font-size: small; ">
+                                                                <p class="ms-2 mb-0"
+                                                                    style="font-size: 12px; color: #807d7d!important;">
+                                                                    <b>{{ $data->view_count }}</b>
+                                                                    Views
+                                                                </p>
+                                                                <p class="ms-4 mb-0"
+                                                                    style="font-size: 12px; color: #807d7d!important;">
+                                                                    <b>{{ $data->upvote_count }}</b>
+                                                                    Votes
+                                                                </p>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="my-auto">
-                                                        <a href="" class="btn btn-sm btn-success"><i
-                                                                class="fa-solid fa-eye"></i></a>
-                                                        <a href="" class="btn btn-sm btn-danger"><i
-                                                                class="fa-solid fa-trash"></i></a>
+                                                        <div class="my-auto">
+                                                            <a href="" class="btn btn-sm btn-success"><i
+                                                                    class="fa-solid fa-eye"></i></a>
+                                                            <a href="" class="btn btn-sm btn-danger"><i
+                                                                    class="fa-solid fa-trash"></i></a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                @endforeach
+                                        </a>
+                                    @endforeach
                                 @endif
                                 {{-- <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
                                 <div class="progress rounded mb-2" style="height: 5px;">

@@ -91,6 +91,10 @@
                                     <label for="deskripsi" class="form-label">Deskripsi</label>
                                     <textarea class="form-control" type="text" name="deskripsi" id="deskripsi" placeholder="Deskripsi Permohonan"></textarea>
                                 </div>
+                                 <div class="mb-3">
+                                    <label for="deskripsi" class="form-label">Template Surat</label>
+                                    <textarea class="form-control" type="text" name="template" id="template" placeholder="Deskripsi Permohonan"></textarea>
+                                </div>
                                 <div class="mb-3" id="syaratBox">
                                     <label for="syarat" class="form-label">Syarat</label>
                                     <div class="d-flex" style="gap: 15px">

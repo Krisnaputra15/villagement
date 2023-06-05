@@ -34,9 +34,12 @@
                 </div>
 
                 <div class="text-center">
-                    <a class="btn mt-4" data-bs-toggle="modal" data-bs-target="#buatPengajuanModal"
-                        style="background-color: #030f27; color: white ; width: 90%; height: 40px;" href="#">Buat
-                        Surat </a>
+                    <a class="btn mt-4" 
+                        style="background-color: #030f27; color: white ; width: 90%; height: 40px;" href="#"
+                        @if($layanan->is_active == 1)
+                        data-bs-toggle="modal" data-bs-target="#buatPengajuanModal"
+                        @endif
+                        >{{$layanan->is_active == 1 ? 'Buat Surat' : 'Layanan Tidak Aktif'}} </a>
                 </div>
             </div>
         </div>

@@ -146,3 +146,12 @@
   object-fit: cover;
   object-position: initial;
 }
+
+.link-hover{
+  background-color: white;
+}
+
+.link-hover:hover{
+  background-color: rgb(154, 154, 154);
+  transition: 0.3s;
+}

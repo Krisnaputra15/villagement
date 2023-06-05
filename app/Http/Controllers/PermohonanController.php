@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Models\Permohonan;
 use App\Models\KelengkapanPermohonan;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
 
 class PermohonanController extends BaseController
 {
@@ -131,6 +133,18 @@ class PermohonanController extends BaseController
             return redirect('admin/permohonan/'.$id)->with('success', 'Berhasil mengubah status penerimaan pengajuan surat');
         }
         return redirect('admin/permohonan/' . $id)->with('error', 'Gagal mengubah status penerimaan pengajuan surat');
+    }
+
+    public function openSurat($id){
+        $data = Permohonan::where('id', $id)->first();
+        $data_desa = DB::table('data_desa')->first();
+        return view('user.pdf', ['user' => $data, 'data_desa' => $data_desa]);
+    }
+    public function generatePDF($id){
+        $data = Permohonan::where('id', $id)->first();
+        $data_desa = DB::table('data_desa')->first();
+        $pdf = PDF::loadView('user.pdf', ['user' => $data, 'data_desa' => $data_desa]);
+        return $pdf->stream();
     }
 
     public function uploadFile($items, Permohonan $permohonan)

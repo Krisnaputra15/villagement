@@ -10,7 +10,7 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="img/carousel-1.jpg" alt="Carousel Image">
+                            <img src="img/4.jpg" alt="Carousel Image">
                             <div class="carousel-caption">
                                 <p class="animated fadeInRight">Pelayanan Administrasi Desa</p>
                                 <h1 class="animated fadeInLeft">Villagement</h1>
@@ -19,7 +19,7 @@
                         </div>
     
                         <div class="carousel-item">
-                            <img src="img/carousel-2.jpg" alt="Carousel Image">
+                            <img src="img/2.jpg" alt="Carousel Image">
                             <div class="carousel-caption">
                                 <p class="animated fadeInRight">Pengurusan Administrasi Surat-Menyurat</p>
                                 <h1 class="animated fadeInLeft"> Lebih Efektif dan Efisien</h1>

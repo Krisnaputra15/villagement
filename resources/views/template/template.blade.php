@@ -108,7 +108,7 @@
                                 class="nav-item nav-link {{ $page == 'forum' ? 'active' : '' }}">Forum</a>
                             <a href="{{ url('/layanan') }}"
                                 class="nav-item nav-link {{ $page == 'layanan' ? 'active' : '' }}">Layanan</a>
-                            <a href="#"
+                            <a href="{{ url('/faq') }}"
                                 class="nav-item nav-link {{ $page == 'faq' ? 'active' : '' }}">FAQ</a>
                         </div>
                         <div class="ml-auto">
