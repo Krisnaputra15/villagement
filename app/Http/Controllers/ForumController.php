@@ -33,7 +33,7 @@ class ForumController extends BaseController
         $forumDone = Forum::where('status', 'selesai')->where('replied_to', null)->get();
         $forumProcessed = Forum::where('status', 'proses')->where('replied_to', null)->get();
         $forumUnprocessed = Forum::where('status', 'menunggu')->where('replied_to', null)->get();
-        return view('admin.forum.index', ['forumDone' => $forumDone, 'forumUnprocessed' => $forumUnprocessed, 'forumProcessed' => $forumUnprocessed, 'page' => 'forum']);
+        return view('admin.forum.index', ['forumDone' => $forumDone, 'forumUnprocessed' => $forumUnprocessed, 'forumProcessed' => $forumProcessed, 'page' => 'forum']);
     }
 
     /**
