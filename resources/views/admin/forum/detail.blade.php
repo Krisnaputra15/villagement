@@ -56,7 +56,7 @@
                                         @foreach ($data->forum_media as $media)
                                             <a href="#" data-bs-toggle="modal"
                                                 data-bs-target="#imageModal{{ $i }}"><img
-                                                    src="{{ asset('storage/forum/' . $media['nama_file']) }}"
+                                                    src="{{ secure_asset('storage/forum/' . $media['nama_file']) }}"
                                                     alt="Image 1"></a>
                                             <div class="modal fade" id="imageModal{{ $i }}" tabindex="-1"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -68,7 +68,7 @@
                                                                 aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body p-1">
-                                                            <img src="{{ asset('storage/forum/' . $media['nama_file']) }}"
+                                                            <img src="{{ secure_asset('storage/forum/' . $media['nama_file']) }}"
                                                                 alt="Image 1" style="width: 36em !important;">
                                                         </div>
                                                     </div>

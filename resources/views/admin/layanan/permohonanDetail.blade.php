@@ -53,7 +53,7 @@
                                             <input class="form-control " style="width:85%" type="text" name="item[]"
                                                 id="" value="{{ $item['nama_file'] }}" disabled>
                                             <a class="btn btn-success" style="width:15%"
-                                                href="{{ asset('storage/permohonan/' . $item['nama_file']) }}"
+                                                href="{{ secure_asset('storage/permohonan/' . $item['nama_file']) }}"
                                                 target="_blank">Lihat file</a>
                                         </div>
                                     @endforeach

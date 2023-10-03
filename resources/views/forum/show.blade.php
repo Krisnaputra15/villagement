@@ -37,7 +37,7 @@
                 @if (sizeof($data->forum_media) != 0)
                     <div class="image-container">
                         @foreach ($data->forum_media as $media)
-                            <img src="{{ asset('storage/forum/' . $media['nama_file']) }}" alt="Image 1" />
+                            <img src="{{ secure_asset('storage/forum/' . $media['nama_file']) }}" alt="Image 1" />
                         @endforeach
                     </div>
                 @endif
@@ -185,7 +185,7 @@
                             <p class="my-auto" style="font-size: 12px; color: #222; font-weight: 600">
                                 {{ $data->user->level == 1 ? 'Villagement - ' . $data->user->nama . ' ' : $data->user->nama }}
                                 @if ($data->user->level == 1)
-                                    <img src="{{ asset('img/verified.png') }}" style="width: 2em" alt="">
+                                    <img src="{{ secure_asset('img/verified.png') }}" style="width: 2em" alt="">
                                 @endif
                             </p>
                             </div>
@@ -204,7 +204,7 @@
                         </div>
                         <div class="image-container">
                             @foreach ($data->forum_media as $media)
-                                <img src="{{ asset('storage/forum/' . $media['nama_file']) }}" alt="Image 1" />
+                                <img src="{{ secure_asset('storage/forum/' . $media['nama_file']) }}" alt="Image 1" />
                             @endforeach
                         </div>
                         <p style="font-size: 14px; color: #222">

@@ -149,7 +149,7 @@
                                 @if(sizeof($data->forum_media) != 0)
                                 <div class="image-container">
                                     @foreach ($data->forum_media as $media)
-                                        <img src="{{ asset('storage/forum/' . $media['nama_file']) }}" alt="Image 1" />
+                                        <img src="{{ secure_asset('storage/forum/' . $media['nama_file']) }}" alt="Image 1" />
                                     @endforeach
                                 </div>
                                 @endif
