@@ -10,7 +10,7 @@
     <meta content="Construction Company Website Template" name="description">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{secure_asset('admin/img/favicon/favicon.ico')}}" />
+    <link rel="icon" type="image/x-icon" href="{{secure_asset('public/admin/img/favicon/favicon.ico')}}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,26 +22,26 @@
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"> --}}
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="{{secure_asset('admin/vendor/fonts/boxicons.css')}}" />
+    <link rel="stylesheet" href="{{secure_asset('public/admin/vendor/fonts/boxicons.css')}}" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="{{secure_asset('admin/vendor/css/core.css')}}" />
-    <link rel="stylesheet" href="{{secure_asset('admin/vendor/css/theme-default.css')}}" />
-    <link rel="stylesheet" href="{{secure_asset('admin/css/demo.css')}}" />
+    <link rel="stylesheet" href="{{secure_asset('public/admin/vendor/css/core.css')}}" />
+    <link rel="stylesheet" href="{{secure_asset('public/admin/vendor/css/theme-default.css')}}" />
+    <link rel="stylesheet" href="{{secure_asset('public/admin/css/demo.css')}}" />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{{secure_asset('admin/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />
+    <link rel="stylesheet" href="{{secure_asset('public/admin/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />
 
-    <link rel="stylesheet" href="{{secure_asset('admin/vendor/libs/apex-charts/apex-charts.css')}}" />
+    <link rel="stylesheet" href="{{secure_asset('public/admin/vendor/libs/apex-charts/apex-charts.css')}}" />
 
     <!-- Page CSS -->
 
     <!-- Helpers -->
-    <script src="{{secure_asset('admin/vendor/js/helpers.js')}}"></script>
+    <script src="{{secure_asset('public/admin/vendor/js/helpers.js')}}"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="{{secure_asset('admin/js/config.js')}}"></script>
+    <script src="{{secure_asset('public/admin/js/config.js')}}"></script>
   </head>
 
   <body>
@@ -202,22 +202,22 @@
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <script src="{{secure_asset('admin/vendor/libs/jquery/jquery.js')}}"></script>
-    <script src="{{secure_asset('admin/vendor/libs/popper/popper.js')}}"></script>
-    <script src="{{secure_asset('admin/vendor/js/bootstrap.js')}}"></script>
-    <script src="{{secure_asset('admin/vendor/libs/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
+    <script src="{{secure_asset('public/admin/vendor/libs/jquery/jquery.js')}}"></script>
+    <script src="{{secure_asset('public/admin/vendor/libs/popper/popper.js')}}"></script>
+    <script src="{{secure_asset('public/admin/vendor/js/bootstrap.js')}}"></script>
+    <script src="{{secure_asset('public/admin/vendor/libs/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
 
-    <script src="{{secure_asset('admin/vendor/js/menu.js')}}"></script>
+    <script src="{{secure_asset('public/admin/vendor/js/menu.js')}}"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <script src="{{secure_asset('admin/vendor/libs/apex-charts/apexcharts.js')}}"></script>
+    <script src="{{secure_asset('public/admin/vendor/libs/apex-charts/apexcharts.js')}}"></script>
 
     <!-- Main JS -->
-    <script src="{{secure_asset('admin/js/main.js')}}"></script>
+    <script src="{{secure_asset('public/admin/js/main.js')}}"></script>
 
     <!-- Page JS -->
-    <script src="{{secure_asset('admin/js/dashboards-analytics.js')}}"></script>
+    <script src="{{secure_asset('public/admin/js/dashboards-analytics.js')}}"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
